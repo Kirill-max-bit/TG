@@ -1,7 +1,9 @@
-__pycache__/
-*.py[cod]
+# venv
+.venv
 .env
+
+# files
 *.log
-htmlcov/
-.vscode/
-.idea/
+
+# python
+__pycache__
