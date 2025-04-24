@@ -1,5 +1,32 @@
 from aiogram.types import KeyboardButton
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
+from aiogram import types, Dispatcher
+from aiogram import Bot
+import asyncio
+
+
+bot = Bot(token="TOKEN")
+dp = Dispatcher()
+
+
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "main":
+    asyncio.run(main())
+
+
+def test_kb():
+    return get_keyboard("Тест", sizes=(1,))
+
+
+async def test_handler(message: types.Message):
+    keyboard = test_kb()
+    await message.answer("Тестовая клавиатура", reply_markup=keyboard)
+
+dp = Dispatcher()
+
+dp.message.register(test_handler, commands=["test"])
 
 
 def get_keyboard(
@@ -39,7 +66,6 @@ def get_keyboard(
     )
 
 
-# Примеры готовых клавиатур
 def main_menu_kb():
     return get_keyboard(
         "🎬 Случайный фильм",
